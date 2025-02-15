@@ -1,0 +1,72 @@
+
+
+--------------------------------------------------------------------------------------------------------SIngle table queries
+
+
+SELECT column names
+FROM  table  
+WHERE search condition 
+GROUP  BY  column  names 
+HAVING  search condi tion 
+ORDER BY column_name;
+
+--------------------------------------------------------------------1111111------select
+
+Select First_name, Last_name, Speciality
+from Doctor;
+
+--------------------------------------------------------------------222222--------as,concat
+
+select first_name || ' ' || last_name AS full_name
+FROM DOCTOR;
+
+
+SELECT first_name, salary * 1.25 AS new_salary
+FROM DOCTOR
+order by last_name;
+
+---------------------------------------------------------------------3333--------distinct
+
+select DISTINCT address 
+    from DOCTOR;
+
+---------------------------------------------------------------------44444------where,and,or,not,between
+
+select first_name,Dob, Address 
+    from rough
+    where salary > 150000;
+
+
+select first_name,Dob, Address 
+    from rough
+    where salary >150000 AND last_name = 'Taylor';
+
+
+SELECT title, year
+FROM d_cds
+WHERE year NOT BETWEEN 1999 AND 2001;
+
+
+-------------------------------------------------------------------55555-------in,like(week 8 chap 9 where---file-----pages40,41- escape and like, page 56-order of operation)
+
+select first_name,Dob, Address 
+    from rough
+    where address in ('Mumbai','Delhi');
+
+ select first_name,Dob, Address 
+    from rough
+    where last_name LIKE '_ay%';
+
+
+-----------------------------------------------------------------6666666---------order by
+
+SELECT First_name, Last_name
+FROM DOCTOR
+where last_name LIKE 'T%'
+ORDER BY Salary DESC:
+
+
+
+
+
+

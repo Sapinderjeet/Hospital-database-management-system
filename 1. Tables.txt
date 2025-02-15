@@ -1,0 +1,592 @@
+------------------------------------------------------------------------------------------------------------------------------------------Doctor
+----------------------------------------------------------------------------------------------------------------create
+CREATE TABLE Doctor(
+
+	Doc_id		int,
+	First_name	varchar(20)	NOT NULL,
+	Last_name	varchar(20),
+        Speciality	varchar(20),
+	Dob		DATE,
+	Address		varchar(20)	DEFAUT 'INDIA',
+	Mob		int		NOT NULL UNIQUE	CHECK (LENGTH(Mob) BETWEEN 9 and 11),
+	Experience	int,
+	Salary		int,
+
+	CONSTRAINT doctor_pk PRIMARY KEY(Doc_id),
+	
+);
+
+
+--------------------------------------------------Correct date format----TO_DATE('10/01/67', 'DD/MM/RR')
+
+
+-----------------------------------------------------------------------------------------------------------insert values
+
+
+
+
+INSERT INTO Doctor (Doc_id, First_name, Last_name, Speciality, Dob, Address, Mob, Experience, Salary)
+	VALUES (1, 'Sara', 'Davis','Orthopedist', TO_DATE('10/01/09', 'DD/MM/RR') , DEFAULT, 9803438765, 5, 100000);
+
+INSERT INTO Doctor (Doc_id, First_name, Last_name, Speciality, Dob, Address, Mob, Experience, Salary)
+	VALUES (2, 'Ross', 'Taylor','Orthopedist',TO_DATE('10/01/86', 'DD/MM/RR') , 'Mumbai', 9666638765, 3, 200000);
+
+INSERT INTO Doctor (Doc_id, First_name, Last_name, Speciality, Dob, Address, Mob, Experience, Salary)
+	VALUES (3, 'Navpreet', 'Singh','Heart Specialist', 10/01/65, 'Sangrur', 9999777346, 6, 400000);
+
+INSERT INTO Doctor (Doc_id, First_name, Last_name, Speciality, Dob, Address, Mob, Experience, Salary)
+	VALUES (4, 'Manoj', 'Singla','Surgeon', 10/01/84,' Delhi', 9764646464, 1, 60000);
+
+INSERT INTO Doctor (Doc_id, First_name, Last_name, Speciality, Dob, Address, Mob, Experience, Salary)
+	VALUES (5, 'Deepak', 'Sharma','Orthopedist', 10/01/67, 'Delhi', 9805558765, 6, 300000);
+
+
+
+SELECT 
+	First_name, Specilaity, trunc(months_bewteen(SYSDATE,Dob)/12) Age
+
+FROM DOCTOR;
+------------------------------------------------------------------------------------------------------------------------------------------Patients
+-----------------------------------------------------------------------------------------------create
+
+CREATE TABLE Patients(
+
+	Pat_id		int,
+	Pat_name	varchar(20) NOT NULL,
+	Gender		varchar(20),
+	Dob		Date,
+	Mob		int NOT NULL UNIQUE CHECK (LENGTH(Mob) BETWEEN 9 and 11),
+	Address		varchar(20)
+	CONSTRAINT patients_pk PRIMARY KEY(Pat_id)
+);
+
+-----------------------------------------------------------------------------------------------insert values
+
+INSERT INTO Patients (Pat_id, Pat_name, Gender, Dob, Mob, Address)	
+	VALUES (1, 'Rajiv', 'Sharma','Male', 10/01/54, 9803438765, 'Sangrur');
+
+INSERT INTO Patients (Pat_id, Pat_name, Gender, Dob, Mob, Address)	
+	VALUES (2, 'Neetu', 'Kaur','Female', 10/01/67, 9806666665, 'Rajpura');
+
+INSERT INTO Patients (Pat_id, Pat_name, Gender, Dob, Mob, Address)	
+	VALUES (3, 'Ravi', 'Kumar','Male', 10/01/67, 8886666665, 'Patiala');
+
+INSERT INTO Patients (Pat_id, Pat_name, Gender, Dob, Mob, Address)	
+	VALUES (4, 'Rajnesh', 'Kumar','Male', 10/01/77, 9806000665, 'Chandigarh');
+
+INSERT INTO Patients(Pat_id, Pat_name, Gender, Dob, Mob, Address)	
+	VALUES (5, 'Jaspreet', 'Kaur','Female', 10/01/97, 9781370121, 'Nabha');
+
+SELECT 
+	Pat_name,trunc(months_bewteen(SYSDATE,Dob)/12) Age
+
+FROM Rough;
+
+-----------------------------------------------------------------------------------------------------------------------------------------Nurse
+--------------------------------------------------------------------------------------create
+
+CREATE TABLE Nurse(
+
+	Nurse_id	int
+	Nurse_name	varchar(20)
+	Dob		int
+	Mob		int
+	Address		varchar(20)
+	Work_shift	varchar(20)
+	Experience	varchar(20)
+	salary		int		DEFAULT 10000,//----------------------------------default constraint
+	CONSTRAINT nurse_pk PRIMARY KEY(Nurse_id)
+);
+
+-----------------------------------------------------------------------------------------------insert values
+
+INSERT INTO Nurse(Nurse_id, Nurse_name, Dob, Mob, Address, Work_shift, Experience, salary)
+	VALUES (1, 'Sara', 10/01/77, 9803438765, 'Delhi', 'Morning, 2);
+
+INSERT INTO Nurse(Nurse_id, Nurse_name, Dob, Mob, Address, Work_shift, Experience, salary)
+	VALUES (2, 'Raj', 10/01/78, 5555538765, 'Rajnagar', 'Evening, 2 );
+
+INSERT INTO Nurse(Nurse_id, Nurse_name, Dob, Mob, Address, Work_shift, Experience, salary)
+	VALUES (3, 'Rasel', 10/01/99, 1113438765, 'Ropar', 'Night, 2, 11000);
+
+INSERT INTO Nurse(Nurse_id, Nurse_name, Dob, Mob, Address, Work_shift, Experience, salary)
+	VALUES (4, 'Karim', 10/01/78, 6663438765, 'Gurdaspur', 'Morning, 2, 15000);
+
+INSERT INTO Nurse(Nurse_id, Nurse_name, Dob, Mob, Address, Work_shift, Experience, salary)
+	VALUES (5, 'Jhanvi', 10/01/77, 9993438765, 'Nabha', 'Morning, 4, 20000);
+
+
+-----------------------------------------------------------------------------------------------------------------------------------------Receptionist
+--------------------------------------------------------------------------------------create
+
+CREATE TABLE Receptionist(
+
+	Rec_id		int
+  	Rec_name	varchar(20)
+	Dob		int
+	Gender		varchar(20)
+	Address		varchar(20)
+	Mob_No		int
+	Work_shift	varchar(20)
+	Salary		int
+	CONSTRAINT receptionist_pk PRIMARY KEY(Rec_id)
+);
+
+-----------------------------------------------------------------------------------------------insert values
+
+INSERT INTO Receptionist (Rec_id, Rec_name, Dob, Gender, Address, Mob_No, Work_shift, Salary)
+	VALUES (1, 'Raji', 10/01/77,'Female, 'Delhi', 9803438765, 'Morning', 10000);
+
+INSERT INTO Receptionist (Rec_id, Rec_name, Dob, Gender, Address, Mob_No, Work_shift, Salary)
+	VALUES (2, 'Monika', 10/01/77,'Female, 'New Delhi', 3333438765, 'Evening', 10000);
+
+INSERT INTO Receptionist (Rec_id, Rec_name, Dob, Gender, Address, Mob_No, Work_shift, Salary)
+	VALUES (3, 'Astha', 10/01/77,'Female, 'Delhi', 9800000765, 'Night', 10000);
+
+INSERT INTO Receptionist (Rec_id, Rec_name, Dob, Gender, Address, Mob_No, Work_shift, Salary)
+	VALUES (4, 'Naveen', 10/01/77,'Male, 'Delhi', 2223438765, 'Night', 10000);
+
+
+
+-----------------------------------------------------------------------------------------------------------------------------------------Ward BOY
+--------------------------------------------------------------------------------------create
+
+CREATE TABLE Ward_boy(
+
+	Wb_id	int,
+	Wb_name	varchar(20),
+	Mob_no	int,
+	Address	Varchar(20),
+	Work_shift	varchar(20),
+	Salary		int
+	CONSTRAINT ward_boy_pk PRIMARY KEY(Wb_id)
+);
+
+
+-----------------------------------------------------------------------------------------------insert values
+
+INSERT INTO Ward_boy (Wb_id, wb_name, Mob_No, Address, Work_shift, Salary)
+	VALUES (1, 'Rakesh', 1111138765,'Kolkata', 'Morning', 6000);
+
+INSERT INTO Ward_boy (Wb_id, wb_name, Mob_No, Address, Work_shift, Salary)
+	VALUES (2, 'Tanish', 2222238765,'UP', 'Evening', 5000);
+
+INSERT INTO Ward_boy (Wb_id, wb_name, Mob_No, Address, Work_shift, Salary)
+	VALUES (3, 'Kamesh', 3333338765,'Bihar', 'Night', 5000);
+
+INSERT INTO Ward_boy (Wb_id, wb_name, Mob_No, Address, Work_shift, Salary)
+	VALUES (4, 'Saman', 4444438765,'Haryana', 'Morning', 6000);
+
+INSERT INTO Ward_boy (Wb_id, wb_name, Mob_No, Address, Work_shift, Salary)
+	VALUES (5, 'Suresh', 5555538765,'Kolkata', 'Night', 4000);
+
+-----------------------------------------------------------------------------------------------------------------------------------------Accountant
+--------------------------------------------------------------------------------------create
+
+CREATE TABLE Accountant(
+
+	Acc_id		int
+	Acc_name	varchar(20)
+	Mob_no		int
+	Address		Varchar(20)
+	Work_shift	varchar(20)
+	salary		int
+	CONSTRAINT accountant_pk PRIMARY KEY(Acc_id)
+);
+
+
+-----------------------------------------------------------------------------------------------insert values
+
+INSERT INTO Accountant (Acc_id, Acc_name, Mob_No, Address, Work_shift, Salary)
+	VALUES (1, 'Surendar', 2211138765,'Kolkata', 'Morning', 6000);
+
+INSERT INTO Accountant (Acc_id, Acc_name, Mob_No, Address, Work_shift, Salary)
+	VALUES (2, 'Joey', 3311138765,'Mumbai', 'Evening', 6000);
+
+INSERT INTO Accountant (Acc_id, Acc_name, Mob_No, Address, Work_shift, Salary)
+	VALUES (3, 'Sheldon', 4411138765,'Kolkata', 'Night', 7000);
+
+INSERT INTO Accountant (Acc_id, Acc_name, Mob_No, Address, Work_shift, Salary)
+	VALUES (4, 'Priyanka', 5511138765,'Delhi', 'Morning', 6000);
+
+
+-----------------------------------------------------------------------------------------------------------------------------------------Medicine
+--------------------------------------------------------------------------------------create
+
+CREATE TABLE Medicine(
+
+	Mdn_id		int
+	Mdn_name	varchar(20)
+	company		varchar(20)
+	Mfg_date	varchar(20)
+	Exp_date	varchar(20)
+	price		int
+	CONSTRAINT medicine_pk PRIMARY KEY(Mdn_id)
+);
+
+-----------------------------------------------------------------------------------------------insert values
+
+INSERT INTO Medicine (Mdn_id, Mdn_name, company, Mfg_date, Exp_date, price)
+	VALUES (1, 'Napa','Glaxo',10/01/2017, 10/01/2026, 600);
+
+INSERT INTO Medicine (Mdn_id, Mdn_name, company, Mfg_date, Exp_date, price)
+	VALUES (2, 'Zymet','Incepta',10/01/2016, 10/01/2028, 500);
+
+INSERT INTO Medicine (Mdn_id, Mdn_name, company, Mfg_date, Exp_date, price)
+	VALUES (3, 'Yamadin','Glaxo',10/01/2017, 10/01/2026, 400);
+
+INSERT INTO Medicine (Mdn_id, Mdn_name, company, Mfg_date, Exp_date, price)
+	VALUES (4, 'Omidon','Incepta',10/01/2019, 10/01/2029, 200);
+
+INSERT INTO Medicine (Mdn_id, Mdn_name, company, Mfg_date, Exp_date, price)
+	VALUES (5, 'Paracetamol','Glaxo',10/01/2017, 10/01/2029, 100);
+
+
+-----------------------------------------------------------------------------------------------------------------------------------------Test
+--------------------------------------------------------------------------------------create
+CREATE TABLE Test(
+
+	Test_id		int
+	Test_name	varchar(20)
+	Date		varchar(20)
+	Rep_date	varchar(20)
+	Fee		int
+
+	CONSTRAINT test_pk PRIMARY KEY(Test_id)
+);
+
+-----------------------------------------------------------------------------------------------insert values
+
+INSERT INTO Test(Test_id, Test_name, Date, Rep_date, Fee)
+	VALUES (1, 'Blood',10/06/2021, 15/06/2021, 600);
+
+INSERT INTO Test(Test_id, Test_name, Date, Rep_date, Fee)
+	VALUES (2, 'Urine',5/06/2021, 10/06/2021, 200);
+
+INSERT INTO Test(Test_id, Test_name, Date, Rep_date, Fee)
+	VALUES (3, 'Ultrasound',8/06/2021, 10/06/2021, 1000);
+
+INSERT INTO Test(Test_id, Test_name, Date, Rep_date, Fee)
+	VALUES (4, 'X-Ray',11/06/2021, 21/06/2021, 800);
+
+INSERT INTO Test(Test_id, Test_name, Date, Rep_date, Fee)
+	VALUES (5, 'Englogram',5/06/2021, 21/06/2021, 2000);
+
+-----------------------------------------------------------------------------------------------------------------------------------------Rooms
+--------------------------------------------------------------------------------------create
+CREATE TABLE Room(
+
+	Room_no		int
+	Room_type	varchar(20)
+	Room_cost	int
+
+	CONSTRAINT room_pk PRIMARY KEY(Room_no)
+);
+
+-----------------------------------------------------------------------------------------------insert values
+
+INSERT INTO Room(Room_no, Room_type, Room_cost)
+	VALUES (1, 'Normal', 2000);
+
+INSERT INTO Room(Room_no, Room_type, Room_cost)
+	VALUES (2, 'Vip', 5000);
+
+INSERT INTO Room(Room_no, Room_type, Room_cost)
+	VALUES (3, 'Normal', 2000);
+
+INSERT INTO Room(Room_no, Room_type, Room_cost)
+	VALUES (4, 'Normal', 2000);
+
+INSERT INTO Room(Room_no, Room_type, Room_cost)
+	VALUES (2=5, 'Vip', 5000);
+
+-----------------------------------------------------------------------------------------------------------------------------------------Operation theatre
+--------------------------------------------------------------------------------------create
+CREATE TABLE ot(
+
+	Ot_id		int
+	Ot_room_no	varchar(20)
+
+	CONSTRAINT ot_pk PRIMARY KEY(Ot_id)
+);
+
+-----------------------------------------------------------------------------------------------insert values
+
+INSERT INTO ot(Ot_id, Ot_room_no)
+	VALUES (1, 'R-200');
+
+INSERT INTO ot(Ot_id, Ot_room_no)
+	VALUES (2, 'R-210');
+
+INSERT INTO ot(Ot_id, Ot_room_no)
+	VALUES (3, 'R-254');
+
+INSERT INTO ot(Ot_id, Ot_room_no)
+	VALUES (4, 'R-100');
+
+INSERT INTO ot(Ot_id, Ot_room_no)
+	VALUES (5, 'R-250');
+
+
+-----------------------------------------------------------------------------------------------------------------------------------------Bill
+--------------------------------------------------------------------------------------create
+CREATE TABLE Bill(
+
+	Bill_id		int
+	Bill_for	varchar(20)
+	Bill_type	varchar(20)
+	Bill_total	int
+
+
+	CONSTRAINT bill_pk PRIMARY KEY(Bill_id)
+);
+
+-----------------------------------------------------------------------------------------------insert values
+
+INSERT INTO Bill(Bill_id, Bill_for,Bill_type, Bill_total)
+	VALUES (1, 'Doctor fee', 'Cash', 1000);
+
+INSERT INTO Bill(Bill_id, Bill_for,Bill_type, Bill_total)
+	VALUES (2, 'Test fee', 'Card', 500);
+
+INSERT INTO Bill(Bill_id, Bill_for,Bill_type, Bill_total)
+	VALUES (3, 'Medicine fee', 'Cheque', 1000);
+
+INSERT INTO Bill(Bill_id, Bill_for,Bill_type, Bill_total)
+	VALUES (4, 'Doctor fee', 'Cash', 1000);
+
+INSERT INTO Bill(Bill_id, Bill_for,Bill_type, Bill_total)
+	VALUES (5, 'Room', 'Cash', 2000);
+
+
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////Junction 
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////Tables
+
+
+-----------------------------------------------------------------------------------------------------------------------------------------Admission
+--------------------------------------------------------------------------------------create
+CREATE TABLE Admission(
+
+	Admsn_id 	int
+	Pat_id 		int FOREIGN KEY REFERENCES Patients(Pat_id),
+	Room_no		int REFERENCES Room
+	Rec_id 		int FOREIGN KEY REFERENCES Reception(Rec_id),
+	Date 		varchar(20)
+	Time		varchar(20)
+
+	CONSTRAINT admission_pk PRIMARY KEY(Admsn_id)
+	CONSTRAINT Room_fk FOREIGN KEY (Room_no)
+    		REFERENCES Room(Room_no)
+);
+
+-----------------------------------------------------------------------------------------------insert values
+
+INSERT INTO Admission(Admsn_id, Pat_id, Room_id, Rec_id, Date, time)
+	VALUES(1, 2, 3, 1, '06/06/2021', '11 A.M.')
+
+INSERT INTO Admission(Admsn_id, Pat_id, Room_id, Rec_id, Date, time)
+	VALUES(2, 5, 4, 2, '06/05/2021', '12 A.M.')
+
+INSERT INTO Admission(Admsn_id, Pat_id, Room_id, Rec_id, Date, time)
+	VALUES(3, 5, 1, 3, '17/06/2021', '11 P.M.')
+
+INSERT INTO Admission(Admsn_id, Pat_id, Room_id, Rec_id, Date, time)
+	VALUES(4, 1, 5, 2, '21/06/2021', '04 P.M.')
+
+INSERT INTO Admission(Admsn_id, Pat_id, Room_id, Rec_id, Date, time)
+	VALUES(5, 3, 2, 1, '28/06/2021', '08 A.M.')
+
+
+
+-----------------------------------------------------------------------------------------------------------------------------------------Appointment
+--------------------------------------------------------------------------------------create
+CREATE TABLE Appointment(
+
+	Apnmt_id 	int 
+	Pat_id 		int REFERENCES Patients
+	Doc_id 		int REFERENCES Doctor
+	Rcp_id 		int REFERENCES Reception
+	Apnmt_date 	varchar(20)
+
+	CONSTRAINT appointment_pk PRIMARY KEY(Admsn_id)
+);
+
+-----------------------------------------------------------------------------------------------insert values
+
+INSERT INTO Appointment(Ap_id, Pat_id, Doc_id, Rec_id, apnmt_date, apnmt_time)
+	VALUES(1, 5, 1, 1, '06/06/2021', '11 A.M.')
+
+INSERT INTO Appointment(Ap_id, Pat_id, Doc_id, Rec_id, apnmt_date, apnmt_time)
+	VALUES(2, 4, 1, 2, '06/06/2021', '01 P.M.')
+
+INSERT INTO Appointment(Ap_id, Pat_id, Doc_id, Rec_id, apnmt_date, apnmt_time)
+	VALUES(3, 3, 2, 1, '07/06/2021', '11 A.M.')
+
+INSERT INTO Appointment(Ap_id, Pat_id, Doc_id, Rec_id, apnmt_date, apnmt_time)
+	VALUES(4, 2, 3, 2, '08/06/2021', '09 A.M.')
+
+INSERT INTO Appointment(Ap_id, Pat_id, Doc_id, Rec_id, apnmt_date, apnmt_time)
+	VALUES(5, 1, 3, 4, '08/06/2021', '11 A.M.')
+
+
+-----------------------------------------------------------------------------------------------------------------------------------------Prescription
+--------------------------------------------------------------------------------------create
+
+CREATE TABLE Prescription(
+
+	Prs_id 	int 
+	Doc_id 	int REFERENCES Doctor
+	Mdcn_id int REFERENCES Medicine
+	Pat_id 	int REFERENCES Patients
+	Date 	varchar(20)
+
+	CONSTRAINT Prescription_pk PRIMARY KEY(Prs_id)
+);
+
+-----------------------------------------------------------------------------------------------insert values
+
+INSERT INTO Prescription(Prs_id, Doc_id, Mdn_id, Pat_id, date)
+	VALUES(1, 3, 1, 1, '06/06/2021')
+
+INSERT INTO Prescription(Prs_id, Doc_id, Mdn_id, Pat_id, date)
+	VALUES(2, 4, 2, 2, '07/06/2021')
+
+INSERT INTO Prescription(Prs_id, Doc_id, Mdn_id, Pat_id, date)
+	VALUES(3, 3, 4, 3, '08/06/2021')
+
+INSERT INTO Prescription(Prs_id, Doc_id, Mdn_id, Pat_id, date)
+	VALUES(4, 2, 3, 4, '09/06/2021')
+
+INSERT INTO Prescription(Prs_id, Doc_id, Mdn_id, Pat_id, date)
+	VALUES(5, 1, 5, 5, '10/06/2021')
+
+-----------------------------------------------------------------------------------------------------------------------------------------Assist
+--------------------------------------------------------------------------------------create
+
+CREATE TABLE Assist(
+
+	Assist_no	int 
+	Pat_id 		int REFERENCES Patients
+	Doc_id 		int REFERENCES Doctor
+	Test_id 	int REFERENCES Test
+	Date 		varchar(20)
+
+	CONSTRAINT Assist_pk PRIMARY KEY(Assist_no)
+);
+
+
+-----------------------------------------------------------------------------------------------insert values
+
+INSERT INTO Assist(Assist_no, Pat_id, Doc_id, Test_id, date)
+	VALUES(1, 3, 1, 1, '06/06/2021')
+
+
+INSERT INTO Assist(Assist_no, Pat_id, Doc_id, Test_id, date)
+	VALUES(2, 4, 1, 2, '06/06/2021')
+
+
+INSERT INTO Assist(Assist_no, Pat_id, Doc_id, Test_id, date)
+	VALUES(3, 1, 4, 5, '06/06/2021')
+
+
+INSERT INTO Assist(Assist_no, Pat_id, Doc_id, Test_id, date)
+	VALUES(4, 5, 5, 4, '06/06/2021')
+
+
+INSERT INTO Assist(Assist_no, Pat_id, Doc_id, Test_id, date)
+	VALUES(5, 2, 4, 3, '06/06/2021')
+
+-----------------------------------------------------------------------------------------------------------------------------------------Operation
+--------------------------------------------------------------------------------------create
+
+CREATE TABLE Operation(
+
+	Op_id 		int 
+	Doc_id 		int REFERENCES Doctor
+	Pat_id 		int REFERENCES Patients
+	Ot_id 		int REFERENCES Ot
+	Op_date 	varchar(20) 
+	Op_time 	varchar(20)
+
+	CONSTRAINT Operation_pk PRIMARY KEY(Op_id)
+);
+
+-----------------------------------------------------------------------------------------------insert values
+
+INSERT INTO Operation(Op_id, Doc_id, Pat_id, Ot_id, Op_date, Op_time)
+	VALUES(1, 3, 3, 1, '06/06/2021', '11 A.M.')
+
+INSERT INTO Operation(Op_id, Doc_id, Pat_id, Ot_id, Op_date, Op_time)
+	VALUES(2, 3, 4, 1, '07/06/2021', '11 P.M.')
+
+
+INSERT INTO Operation(Op_id, Doc_id, Pat_id, Ot_id, Op_date, Op_time)
+	VALUES(3, 2, 5, 3, '11/06/2021', '11 P.M.')
+
+
+INSERT INTO Operation(Op_id, Doc_id, Pat_id, Ot_id, Op_date, Op_time)
+	VALUES(4, 1, 1, 3, '18/06/2021', '04 P.M.')
+
+
+INSERT INTO Operation(Op_id, Doc_id, Pat_id, Ot_id, Op_date, Op_time)
+	VALUES(5, 1, 2, 5, '21/06/2021', '01 P.M.')
+
+-----------------------------------------------------------------------------------------------------------------------------------------Nursing Service
+--------------------------------------------------------------------------------------create
+
+CREATE TABLE Nursing_service(
+
+	Service_id 	int,
+	Pat_id 		int c
+	Nurse_id 	int REFERENCES Nurse,
+	Room_id 	int REFERENCES Room,
+	Date 	 	DATE,
+
+	CONSTRAINT services_pk PRIMARY KEY(Service_id )
+);
+
+-----------------------------------------------------------------------------------------------insert values
+
+INSERT INTO Operation(Service_id, Pat_id, Nurse_id, Room_id, Date)
+	VALUES(1, 3, 3, 1,TO_DATE('10/01/86', 'DD/MM/RR'))
+
+INSERT INTO Operation(Service_id, Pat_id, Nurse_id, Room_id, Date)
+	VALUES(1, 3, 3, 1,TO_DATE('10/01/86', 'DD/MM/RR'))
+
+INSERT INTO Operation(Service_id, Pat_id, Nurse_id, Room_id, Date)
+	VALUES(1, 3, 3, 1,TO_DATE('10/01/86', 'DD/MM/RR'))
+
+INSERT INTO Operation(Service_id, Pat_id, Nurse_id, Room_id, Date)
+	VALUES(1, 3, 3, 1,TO_DATE('10/01/86', 'DD/MM/RR'))
+
+INSERT INTO Operation(Service_id, Pat_id, Nurse_id, Room_id, Date)
+	VALUES(1, 3, 3, 1,TO_DATE('10/01/86', 'DD/MM/RR'))
+
+
+
+-----------------------------------------------------------------------------------------------------------------------------------------Bill Total
+--------------------------------------------------------------------------------------create
+
+CREATE TABLE Bill_total(
+
+	Bill_id int,
+	Acc_id	int REFERENCES Patients,
+	mdn_id	int REFERENCES Patients,
+	Test_id	int REFERENCES Patients,
+	Room_id	int REFERENCES Patients,
+	pat_id	int REFERENCES Patients,
+	Bill_paid int,
+
+	CONSTRAINT bills_pk PRIMARY KEY(bill_id )
+);
+
+-----------------------------------------------------------------------------------------------insert values
+
+INSERT INTO Operation(Bill_id, Acc_id, Pat_id, Room_id, Mdn_id, Test_id, Bill_paid)
+	VALUES(1, 3, 3, 1,4,3,400)
+
+
+
+
+

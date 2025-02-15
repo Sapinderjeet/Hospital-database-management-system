@@ -1,0 +1,10 @@
+
+
+-------------which doctor will see which patient at which date and time(add time)
+
+
+
+
+    select first_name, pat_name,apnmt_date 
+    from rough, rough1, rough3, appointment 
+    where rec_name = 'Raji' and rough1.pat_id = appointment.pat_id and rough.doc_id = appointment.doc_id
